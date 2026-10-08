@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_58a184d1cee0c3060639f67905d5c3fb {
+                #map_5f8cf73930089901dedf6707be616d97 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -55,9 +55,9 @@
     
     
     <div style="position: fixed; bottom: 30px; left: 30px; z-index: 9999;
-                background: white; padding: 12px 16px; border-radius: 6px;
-                box-shadow: 0 2px 6px rgba(0,0,0,0.2); font-family: sans-serif;
-                font-size: 13px; line-height: 1.6;">
+                background: rgba(255,255,255,0.94); padding: 12px 16px;
+                border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+                font-family: sans-serif; font-size: 13px; line-height: 1.6;">
       <b>Predicted 2026 NDVI change</b><br>
       <span style="color:#2c7a4b;">●</span> stable (≥ -3%)<br>
       <span style="color:#d4a017;">●</span> moderate (-3% to -8%)<br>
@@ -67,14 +67,14 @@
     </div>
     
     
-            <div class="folium-map" id="map_58a184d1cee0c3060639f67905d5c3fb" ></div>
+            <div class="folium-map" id="map_5f8cf73930089901dedf6707be616d97" ></div>
         
 </body>
 <script>
     
     
-            var map_58a184d1cee0c3060639f67905d5c3fb = L.map(
-                "map_58a184d1cee0c3060639f67905d5c3fb",
+            var map_5f8cf73930089901dedf6707be616d97 = L.map(
+                "map_5f8cf73930089901dedf6707be616d97",
                 {
                     center: [1.29, 103.85],
                     crs: L.CRS.EPSG3857,
@@ -91,14 +91,14 @@
 
         
     
-            var tile_layer_3e75784a6674f4290b4bf1bf433c8c64 = L.tileLayer(
-                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+            var tile_layer_ad867ab981a028946813423676b393e4 = L.tileLayer(
+                "https://mt1.google.com/vt/lyrs=s\u0026x={x}\u0026y={y}\u0026z={z}",
                 {
   "minZoom": 0,
-  "maxZoom": 19,
-  "maxNativeZoom": 19,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
   "noWrap": false,
-  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "attribution": "Google Satellite",
   "subdomains": "abc",
   "detectRetina": false,
   "tms": false,
@@ -108,33 +108,53 @@
             );
         
     
-            tile_layer_3e75784a6674f4290b4bf1bf433c8c64.addTo(map_58a184d1cee0c3060639f67905d5c3fb);
+            tile_layer_ad867ab981a028946813423676b393e4.addTo(map_5f8cf73930089901dedf6707be616d97);
         
     
-            var circle_marker_b845ef3a0a039fb1a00703528d917576 = L.circleMarker(
+            var tile_layer_4c4655950da1e58b8ad1c611fbfded92 = L.tileLayer(
+                "https://mt1.google.com/vt/lyrs=y\u0026x={x}\u0026y={y}\u0026z={z}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Google Hybrid",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 0.6,
+}
+
+            );
+        
+    
+            tile_layer_4c4655950da1e58b8ad1c611fbfded92.addTo(map_5f8cf73930089901dedf6707be616d97);
+        
+    
+            var circle_marker_f965a50470bc1257a15b5a7271035fcb = L.circleMarker(
                 [1.4097, 103.9586],
-                {"bubblingMouseEvents": true, "color": "#2c7a4b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2c7a4b", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25.5499510762741, "stroke": true, "weight": 2}
-            ).addTo(map_58a184d1cee0c3060639f67905d5c3fb);
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2c7a4b", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 25.5499510762741, "stroke": true, "weight": 2}
+            ).addTo(map_5f8cf73930089901dedf6707be616d97);
         
     
-        var popup_b1384b6df8fb02effc145f421975c9f9 = L.popup({
+        var popup_5ca0987dad282ac55e981856c1c75033 = L.popup({
   "maxWidth": 250,
 });
 
         
             
-                var html_f5aca564a2670b0c6be0e6bb38fa581f = $(`<div id="html_f5aca564a2670b0c6be0e6bb38fa581f" style="width: 100.0%; height: 100.0%;"><b>Pulau Ubin</b><br>2025 predicted: 0.561<br>2026 predicted: 0.641<br>Change: <b>+14.3%</b><br>Model RMSE (hold-out): ±0.145<br><i>Green risk</i></div>`)[0];
-                popup_b1384b6df8fb02effc145f421975c9f9.setContent(html_f5aca564a2670b0c6be0e6bb38fa581f);
+                var html_8e8d6cb945a1b72bda259bdd21987aae = $(`<div id="html_8e8d6cb945a1b72bda259bdd21987aae" style="width: 100.0%; height: 100.0%;"><b>Pulau Ubin</b><br>2025 predicted: 0.561<br>2026 predicted: 0.641<br>Change: <b>+14.3%</b><br>Model RMSE (hold-out): ±0.145<br><i>Green risk</i></div>`)[0];
+                popup_5ca0987dad282ac55e981856c1c75033.setContent(html_8e8d6cb945a1b72bda259bdd21987aae);
             
         
 
-        circle_marker_b845ef3a0a039fb1a00703528d917576.bindPopup(popup_b1384b6df8fb02effc145f421975c9f9)
+        circle_marker_f965a50470bc1257a15b5a7271035fcb.bindPopup(popup_5ca0987dad282ac55e981856c1c75033)
         ;
 
         
     
     
-            circle_marker_b845ef3a0a039fb1a00703528d917576.bindTooltip(
+            circle_marker_f965a50470bc1257a15b5a7271035fcb.bindTooltip(
                 `<div>
                      Pulau Ubin: +14.3%
                  </div>`,
@@ -144,30 +164,30 @@
             );
         
     
-            var circle_marker_da140748899d26f2f654561910e478b9 = L.circleMarker(
+            var circle_marker_4608ba8a304b38582cb7cd51dbd52328 = L.circleMarker(
                 [1.2168, 103.8478],
-                {"bubblingMouseEvents": true, "color": "#2c7a4b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2c7a4b", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
-            ).addTo(map_58a184d1cee0c3060639f67905d5c3fb);
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2c7a4b", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(map_5f8cf73930089901dedf6707be616d97);
         
     
-        var popup_ef84b1818f5025c8c691b6f0dfee89e3 = L.popup({
+        var popup_79d883c36c203dce6f0d238bbadd0571 = L.popup({
   "maxWidth": 250,
 });
 
         
             
-                var html_0963274bdecaf748acf27bc9e200a60d = $(`<div id="html_0963274bdecaf748acf27bc9e200a60d" style="width: 100.0%; height: 100.0%;"><b>St. John's</b><br>2025 predicted: 0.585<br>2026 predicted: 0.584<br>Change: <b>-0.2%</b><br>Model RMSE (hold-out): ±0.166<br><i>Green risk</i></div>`)[0];
-                popup_ef84b1818f5025c8c691b6f0dfee89e3.setContent(html_0963274bdecaf748acf27bc9e200a60d);
+                var html_5e4d8d84ba7c83532fbd31828e23a623 = $(`<div id="html_5e4d8d84ba7c83532fbd31828e23a623" style="width: 100.0%; height: 100.0%;"><b>St. John's</b><br>2025 predicted: 0.585<br>2026 predicted: 0.584<br>Change: <b>-0.2%</b><br>Model RMSE (hold-out): ±0.166<br><i>Green risk</i></div>`)[0];
+                popup_79d883c36c203dce6f0d238bbadd0571.setContent(html_5e4d8d84ba7c83532fbd31828e23a623);
             
         
 
-        circle_marker_da140748899d26f2f654561910e478b9.bindPopup(popup_ef84b1818f5025c8c691b6f0dfee89e3)
+        circle_marker_4608ba8a304b38582cb7cd51dbd52328.bindPopup(popup_79d883c36c203dce6f0d238bbadd0571)
         ;
 
         
     
     
-            circle_marker_da140748899d26f2f654561910e478b9.bindTooltip(
+            circle_marker_4608ba8a304b38582cb7cd51dbd52328.bindTooltip(
                 `<div>
                      St. John's: -0.2%
                  </div>`,
@@ -177,30 +197,30 @@
             );
         
     
-            var circle_marker_00f7476d654cc07b2b368585a065604d = L.circleMarker(
+            var circle_marker_85d1370c96d662e6b7a05aa9ad4be783 = L.circleMarker(
                 [1.2245, 103.8605],
-                {"bubblingMouseEvents": true, "color": "#2c7a4b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2c7a4b", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
-            ).addTo(map_58a184d1cee0c3060639f67905d5c3fb);
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2c7a4b", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(map_5f8cf73930089901dedf6707be616d97);
         
     
-        var popup_78fb9f45208bfe3038cc4ba589f0ec27 = L.popup({
+        var popup_2ec336838422a402f2452ca41069907d = L.popup({
   "maxWidth": 250,
 });
 
         
             
-                var html_02fe5bd604becfacae46da9977976126 = $(`<div id="html_02fe5bd604becfacae46da9977976126" style="width: 100.0%; height: 100.0%;"><b>Kusu</b><br>2025 predicted: 0.625<br>2026 predicted: 0.620<br>Change: <b>-0.8%</b><br>Model RMSE (hold-out): ±0.141<br><i>Green risk</i></div>`)[0];
-                popup_78fb9f45208bfe3038cc4ba589f0ec27.setContent(html_02fe5bd604becfacae46da9977976126);
+                var html_ad41afa038a6cd720cd07fee1d581009 = $(`<div id="html_ad41afa038a6cd720cd07fee1d581009" style="width: 100.0%; height: 100.0%;"><b>Kusu</b><br>2025 predicted: 0.625<br>2026 predicted: 0.620<br>Change: <b>-0.8%</b><br>Model RMSE (hold-out): ±0.141<br><i>Green risk</i></div>`)[0];
+                popup_2ec336838422a402f2452ca41069907d.setContent(html_ad41afa038a6cd720cd07fee1d581009);
             
         
 
-        circle_marker_00f7476d654cc07b2b368585a065604d.bindPopup(popup_78fb9f45208bfe3038cc4ba589f0ec27)
+        circle_marker_85d1370c96d662e6b7a05aa9ad4be783.bindPopup(popup_2ec336838422a402f2452ca41069907d)
         ;
 
         
     
     
-            circle_marker_00f7476d654cc07b2b368585a065604d.bindTooltip(
+            circle_marker_85d1370c96d662e6b7a05aa9ad4be783.bindTooltip(
                 `<div>
                      Kusu: -0.8%
                  </div>`,
@@ -210,30 +230,30 @@
             );
         
     
-            var circle_marker_141f36792d7a7dd74b3e1e9ce151561f = L.circleMarker(
+            var circle_marker_48db3372ccc8512b86429fea80953048 = L.circleMarker(
                 [1.226, 103.855],
-                {"bubblingMouseEvents": true, "color": "#c0392b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c0392b", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
-            ).addTo(map_58a184d1cee0c3060639f67905d5c3fb);
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#c0392b", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(map_5f8cf73930089901dedf6707be616d97);
         
     
-        var popup_62cd2885a3e45540fc8f5b1b74c42293 = L.popup({
+        var popup_69b405906f799687d488e1333c2da86f = L.popup({
   "maxWidth": 250,
 });
 
         
             
-                var html_6061672bb00708e6c7c7b37a5f6b5c01 = $(`<div id="html_6061672bb00708e6c7c7b37a5f6b5c01" style="width: 100.0%; height: 100.0%;"><b>Lazarus</b><br>2025 predicted: 0.690<br>2026 predicted: 0.628<br>Change: <b>-8.9%</b><br>Model RMSE (hold-out): ±0.151<br><i>Red risk</i></div>`)[0];
-                popup_62cd2885a3e45540fc8f5b1b74c42293.setContent(html_6061672bb00708e6c7c7b37a5f6b5c01);
+                var html_113fb597b6fae166c9bde1e8e3e19762 = $(`<div id="html_113fb597b6fae166c9bde1e8e3e19762" style="width: 100.0%; height: 100.0%;"><b>Lazarus</b><br>2025 predicted: 0.690<br>2026 predicted: 0.628<br>Change: <b>-8.9%</b><br>Model RMSE (hold-out): ±0.151<br><i>Red risk</i></div>`)[0];
+                popup_69b405906f799687d488e1333c2da86f.setContent(html_113fb597b6fae166c9bde1e8e3e19762);
             
         
 
-        circle_marker_141f36792d7a7dd74b3e1e9ce151561f.bindPopup(popup_62cd2885a3e45540fc8f5b1b74c42293)
+        circle_marker_48db3372ccc8512b86429fea80953048.bindPopup(popup_69b405906f799687d488e1333c2da86f)
         ;
 
         
     
     
-            circle_marker_141f36792d7a7dd74b3e1e9ce151561f.bindTooltip(
+            circle_marker_48db3372ccc8512b86429fea80953048.bindTooltip(
                 `<div>
                      Lazarus: -8.9%
                  </div>`,
@@ -243,30 +263,30 @@
             );
         
     
-            var circle_marker_dfc8a51fea2ecf2027ba0ab794cb57b4 = L.circleMarker(
+            var circle_marker_e6abeb8305165ef7f7808c78d14bec34 = L.circleMarker(
                 [1.2118, 103.8352],
-                {"bubblingMouseEvents": true, "color": "#2c7a4b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2c7a4b", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
-            ).addTo(map_58a184d1cee0c3060639f67905d5c3fb);
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2c7a4b", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(map_5f8cf73930089901dedf6707be616d97);
         
     
-        var popup_f89cb77930d7c71703486f1c2c1e69f1 = L.popup({
+        var popup_0f9645878eb49801d005c022d5ddc25f = L.popup({
   "maxWidth": 250,
 });
 
         
             
-                var html_78ef3867101b51760e55459fc9cad373 = $(`<div id="html_78ef3867101b51760e55459fc9cad373" style="width: 100.0%; height: 100.0%;"><b>Sisters</b><br>2025 predicted: 0.638<br>2026 predicted: 0.625<br>Change: <b>-2.1%</b><br>Model RMSE (hold-out): ±0.148<br><i>Green risk</i></div>`)[0];
-                popup_f89cb77930d7c71703486f1c2c1e69f1.setContent(html_78ef3867101b51760e55459fc9cad373);
+                var html_20cb0f5f8794f94566cc8abe942561a4 = $(`<div id="html_20cb0f5f8794f94566cc8abe942561a4" style="width: 100.0%; height: 100.0%;"><b>Sisters</b><br>2025 predicted: 0.638<br>2026 predicted: 0.625<br>Change: <b>-2.1%</b><br>Model RMSE (hold-out): ±0.148<br><i>Green risk</i></div>`)[0];
+                popup_0f9645878eb49801d005c022d5ddc25f.setContent(html_20cb0f5f8794f94566cc8abe942561a4);
             
         
 
-        circle_marker_dfc8a51fea2ecf2027ba0ab794cb57b4.bindPopup(popup_f89cb77930d7c71703486f1c2c1e69f1)
+        circle_marker_e6abeb8305165ef7f7808c78d14bec34.bindPopup(popup_0f9645878eb49801d005c022d5ddc25f)
         ;
 
         
     
     
-            circle_marker_dfc8a51fea2ecf2027ba0ab794cb57b4.bindTooltip(
+            circle_marker_e6abeb8305165ef7f7808c78d14bec34.bindTooltip(
                 `<div>
                      Sisters: -2.1%
                  </div>`,
@@ -276,30 +296,30 @@
             );
         
     
-            var circle_marker_fc72e6153f07b193fe1c710dd1aa356a = L.circleMarker(
+            var circle_marker_9705d551e33c79907a8257302cef1a23 = L.circleMarker(
                 [1.2258, 103.7488],
-                {"bubblingMouseEvents": true, "color": "#2c7a4b", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2c7a4b", "fillOpacity": 0.65, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
-            ).addTo(map_58a184d1cee0c3060639f67905d5c3fb);
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2c7a4b", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(map_5f8cf73930089901dedf6707be616d97);
         
     
-        var popup_462eb5f1f49e0d0116e1dd7ca6189f10 = L.popup({
+        var popup_35fbac52388018f644dadd5f56973711 = L.popup({
   "maxWidth": 250,
 });
 
         
             
-                var html_c7164ac539a1d7fcfb5e263d09544944 = $(`<div id="html_c7164ac539a1d7fcfb5e263d09544944" style="width: 100.0%; height: 100.0%;"><b>Pulau Hantu</b><br>2025 predicted: 0.547<br>2026 predicted: 0.553<br>Change: <b>+1.2%</b><br>Model RMSE (hold-out): ±0.203<br><i>Green risk</i></div>`)[0];
-                popup_462eb5f1f49e0d0116e1dd7ca6189f10.setContent(html_c7164ac539a1d7fcfb5e263d09544944);
+                var html_9b86ee5ab1af5a98c49839e97444cb00 = $(`<div id="html_9b86ee5ab1af5a98c49839e97444cb00" style="width: 100.0%; height: 100.0%;"><b>Pulau Hantu</b><br>2025 predicted: 0.547<br>2026 predicted: 0.553<br>Change: <b>+1.2%</b><br>Model RMSE (hold-out): ±0.203<br><i>Green risk</i></div>`)[0];
+                popup_35fbac52388018f644dadd5f56973711.setContent(html_9b86ee5ab1af5a98c49839e97444cb00);
             
         
 
-        circle_marker_fc72e6153f07b193fe1c710dd1aa356a.bindPopup(popup_462eb5f1f49e0d0116e1dd7ca6189f10)
+        circle_marker_9705d551e33c79907a8257302cef1a23.bindPopup(popup_35fbac52388018f644dadd5f56973711)
         ;
 
         
     
     
-            circle_marker_fc72e6153f07b193fe1c710dd1aa356a.bindTooltip(
+            circle_marker_9705d551e33c79907a8257302cef1a23.bindTooltip(
                 `<div>
                      Pulau Hantu: +1.2%
                  </div>`,

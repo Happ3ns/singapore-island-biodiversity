@@ -61,6 +61,13 @@ FEATURES = [
 GREEN_THRESHOLD = -3.0
 YELLOW_THRESHOLD = -8.0
 
+# Satellite base imagery — Esri World Imagery (free, no API key required).
+ESRI_SAT_URL = (
+    "https://server.arcgisonline.com/ArcGIS/rest/services/"
+    "World_Imagery/MapServer/tile/{z}/{y}/{x}"
+)
+ESRI_ATTR = "Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics"
+
 log = logging.getLogger("make_map")
 
 
@@ -155,11 +162,23 @@ def classify(change_pct: float) -> str:
 def render_folium(rows: list[dict]) -> None:
     import folium
 
+    # Google Satellite tiles — no API key required.
     m = folium.Map(
         location=[1.29, 103.85],
         zoom_start=12,
-        tiles="OpenStreetMap",
+        tiles="https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+        attr="Google Satellite",
     )
+
+    # Optional hybrid labels overlay (Google Hybrid: satellite + street names)
+    folium.TileLayer(
+        tiles="https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
+        attr="Google Hybrid",
+        name="Labels",
+        overlay=True,
+        control=False,
+        opacity=0.6,
+    ).add_to(m)
 
     colors = {"green": "#2c7a4b", "yellow": "#d4a017", "red": "#c0392b"}
 
@@ -177,20 +196,20 @@ def render_folium(rows: list[dict]) -> None:
         folium.CircleMarker(
             location=[spec["lat"], spec["lon"]],
             radius=radius,
-            color=colors[r["category"]],
+            color="white",
+            weight=2,
             fill=True,
             fill_color=colors[r["category"]],
-            fill_opacity=0.65,
-            weight=2,
+            fill_opacity=0.8,
             popup=folium.Popup(popup_html, max_width=250),
             tooltip=f"{r['island']}: {r['change_pct']:+.1f}%",
         ).add_to(m)
 
     legend_html = """
     <div style="position: fixed; bottom: 30px; left: 30px; z-index: 9999;
-                background: white; padding: 12px 16px; border-radius: 6px;
-                box-shadow: 0 2px 6px rgba(0,0,0,0.2); font-family: sans-serif;
-                font-size: 13px; line-height: 1.6;">
+                background: rgba(255,255,255,0.94); padding: 12px 16px;
+                border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+                font-family: sans-serif; font-size: 13px; line-height: 1.6;">
       <b>Predicted 2026 NDVI change</b><br>
       <span style="color:#2c7a4b;">●</span> stable (≥ -3%)<br>
       <span style="color:#d4a017;">●</span> moderate (-3% to -8%)<br>

@@ -319,7 +319,7 @@ def main() -> None:
         log.info("XGBoost RMSE:       %.4f", rmse)
         log.info("Improvement:        %.1f%%", improvement)
         if improvement >= 20:
-            log.info("PASS — XGBoost beats the best baseline by ≥ 20%%.")
+            log.info("PASS — XGBoost beats the best baseline by ≥ 20%.")
         else:
             log.warning("Below the 20%% target. Check the feature importance "
                         "chart — the model is probably leaning on "

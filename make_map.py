@@ -205,6 +205,56 @@ def render_folium(rows: list[dict]) -> None:
             tooltip=f"{r['island']}: {r['change_pct']:+.1f}%",
         ).add_to(m)
 
+    header_html = """
+    <div id="sg-dashboard" style="position: fixed; top: 16px; left: 16px; right: 16px; max-width: 900px; margin: 0 auto; z-index: 9999;
+                background: rgba(18, 20, 24, 0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+                color: #f3f4f6; padding: 14px 18px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.14);
+                box-shadow: 0 8px 32px rgba(0,0,0,0.5); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px;">
+        <div>
+          <h1 style="margin: 0; font-size: 16px; font-weight: 700; letter-spacing: -0.02em; display: flex; align-items: center; gap: 8px;">
+            <span>🌿 Singapore Micro-Islands Vegetation Monitor</span>
+            <span style="font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: rgba(46, 125, 50, 0.25); color: #81c784; border: 1px solid rgba(129, 199, 132, 0.3);">Sentinel-2 L2A + iNaturalist</span>
+          </h1>
+          <p style="margin: 4px 0 0 0; font-size: 12px; color: #9ca3af; line-height: 1.4;">
+            XGBoost pipeline predicting annual NDVI vegetation change across 6 micro-islands &middot; <b>33% better RMSE</b> vs naive persistence baseline.
+          </p>
+        </div>
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <a href="https://github.com/Happ3ns/singapore-island-biodiversity/blob/main/writeup.md" target="_blank"
+             style="color: #60a5fa; text-decoration: none; font-size: 12px; font-weight: 500; background: rgba(96, 165, 250, 0.12); padding: 5px 11px; border-radius: 6px; border: 1px solid rgba(96, 165, 250, 0.3);">
+            Research Paper &rarr;
+          </a>
+          <a href="https://happ3ns.github.io/" target="_blank"
+             style="color: #d1d5db; text-decoration: none; font-size: 12px; font-weight: 500; background: rgba(255,255,255,0.06); padding: 5px 11px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);">
+            Portfolio &rarr;
+          </a>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 8px;">
+        <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #6b7280; font-weight: 600; margin-right: 4px;">Fly To:</span>
+        <button onclick="flyToLoc(1.29, 103.85, 12)" style="background: rgba(255,255,255,0.08); color: #e5e7eb; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 4px 9px; font-size: 12px; cursor: pointer;">All Islands</button>
+        <button onclick="flyToLoc(1.4097, 103.9586, 14)" style="background: rgba(44, 122, 75, 0.2); color: #86efac; border: 1px solid rgba(44, 122, 75, 0.4); border-radius: 6px; padding: 4px 9px; font-size: 12px; cursor: pointer;">Pulau Ubin (-0.2%)</button>
+        <button onclick="flyToLoc(1.2168, 103.8478, 15)" style="background: rgba(44, 122, 75, 0.2); color: #86efac; border: 1px solid rgba(44, 122, 75, 0.4); border-radius: 6px; padding: 4px 9px; font-size: 12px; cursor: pointer;">St. John's (+0.3%)</button>
+        <button onclick="flyToLoc(1.2260, 103.8550, 16)" style="background: rgba(192, 57, 43, 0.25); color: #fca5a5; border: 1px solid rgba(192, 57, 43, 0.5); border-radius: 6px; padding: 4px 9px; font-size: 12px; cursor: pointer;">Lazarus (-8.9%)</button>
+        <button onclick="flyToLoc(1.2245, 103.8605, 16)" style="background: rgba(44, 122, 75, 0.2); color: #86efac; border: 1px solid rgba(44, 122, 75, 0.4); border-radius: 6px; padding: 4px 9px; font-size: 12px; cursor: pointer;">Kusu (+1.3%)</button>
+        <button onclick="flyToLoc(1.2118, 103.8352, 16)" style="background: rgba(44, 122, 75, 0.2); color: #86efac; border: 1px solid rgba(44, 122, 75, 0.4); border-radius: 6px; padding: 4px 9px; font-size: 12px; cursor: pointer;">Sisters (-2.1%)</button>
+        <button onclick="flyToLoc(1.2258, 103.7488, 16)" style="background: rgba(44, 122, 75, 0.2); color: #86efac; border: 1px solid rgba(44, 122, 75, 0.4); border-radius: 6px; padding: 4px 9px; font-size: 12px; cursor: pointer;">Pulau Hantu (+1.2%)</button>
+      </div>
+    </div>
+    <script>
+      function flyToLoc(lat, lon, zoom) {
+        for (var key in window) {
+          if (key.indexOf('map_') === 0 && window[key] && typeof window[key].flyTo === 'function') {
+            window[key].flyTo([lat, lon], zoom, { duration: 1.2 });
+            break;
+          }
+        }
+      }
+    </script>
+    """
+    m.get_root().html.add_child(folium.Element(header_html))
+
     legend_html = """
     <div style="position: fixed; bottom: 30px; left: 30px; z-index: 9999;
                 background: rgba(255,255,255,0.94); padding: 12px 16px;
